@@ -1,6 +1,271 @@
 import { useState } from "react";
-import { Search, Filter, Grid, Archive, Rocket, FileText, Delete, X, Pencil, Upload, Link, Clipboard, Book, LogOut, Settings } from "lucide-react";
+import { Search, Filter, Grid, Archive, Rocket, FileText, Delete, X, Pencil, Upload, Link, Clipboard, Book, LogOut, Settings, ChevronDown } from "lucide-react";
 
+// Clipboard Content Component
+const ClipboardContent = () => (
+    // <div className="p-8">
+    //     <h2 className="text-2xl font-bold text-gray-800 mb-6">Clipboard Dashboard</h2>
+    //     <div className="bg-white rounded-lg shadow p-6">
+    //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    //             <div className="p-4 border rounded-lg">
+    //                 <h3 className="font-semibold mb-2">Recent Copies</h3>
+    //                 <ul className="space-y-2">
+    //                     <li className="text-gray-600">Copy item 1</li>
+    //                     <li className="text-gray-600">Copy item 2</li>
+    //                     <li className="text-gray-600">Copy item 3</li>
+    //                 </ul>
+    //             </div>
+    //             <div className="p-4 border rounded-lg">
+    //                 <h3 className="font-semibold mb-2">Saved Items</h3>
+    //                 <ul className="space-y-2">
+    //                     <li className="text-gray-600">Saved item 1</li>
+    //                     <li className="text-gray-600">Saved item 2</li>
+    //                 </ul>
+    //             </div>
+    //             <div className="p-4 border rounded-lg">
+    //                 <h3 className="font-semibold mb-2">Quick Actions</h3>
+    //                 <div className="space-y-2">
+    //                     <button className="w-full px-4 py-2 text-sm bg-blue-50 text-blue-600 rounded">Copy to Clipboard</button>
+    //                     <button className="w-full px-4 py-2 text-sm bg-green-50 text-green-600 rounded">Save Item</button>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>
+    <div className="p-8">
+        <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-800">My Projects</h2>
+            <div className="flex items-center space-x-4">
+                <button
+                    onClick={() => setIsFilterOpen(true)}
+                    className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                >
+                    <Filter className="h-5 w-5" />
+                    <span>Filter</span>
+                </button>
+                <button
+                    onClick={() => setIsFieldsOpen(true)}
+                    className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                >
+                    <Grid className="h-5 w-5" />
+                    <span>Fields</span>
+                </button>
+                <button className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                    <Archive className="h-5 w-5" />
+                    <span>Archive</span>
+                </button>
+                <button className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                    <Delete className="h-5 w-5" />
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+
+        <div className="overflow-x-auto bg-white rounded-lg shadow">
+            <table className="w-full">
+                <thead>
+                    <tr className="border-b">
+                        <th className="px-6 py-3 text-left">
+                            <input type="checkbox" className="rounded border-gray-300" />
+                        </th>
+                        <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Project name</th>
+                        <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Status</th>
+                        <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Owner</th>
+                        <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Date modified</th>
+                        <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Date deployed</th>
+                        <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Submissions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className="border-b border-gray-400 hover:bg-gray-50">
+                        <td className="px-6 py-4">
+                            <input type="checkbox" className="rounded border-gray-300" />
+                        </td>
+                        <td className="px-6 py-4">
+                            <a href="#" className="text-blue-600 hover:underline">
+                                Demo Project
+                            </a>
+                        </td>
+                        <td className="px-6 py-4">
+                            <span className="flex items-center text-blue-600">
+                                <Rocket className="h-4 w-4 mr-1" />
+                                deployed
+                            </span>
+                        </td>
+                        <td className="px-6 py-4">me</td>
+                        <td className="px-6 py-4">February 5, 2025</td>
+                        <td className="px-6 py-4">February 5, 2025</td>
+                        <td className="px-6 py-4">1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+);
+
+// Book Content Component
+const BookContent = () => (
+    // <div className="p-8">
+    //     <h2 className="text-2xl font-bold text-gray-800 mb-6">Documentation Center</h2>
+    //     <div className="bg-white rounded-lg shadow p-6">
+    //         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    //             <div className="p-4 border rounded-lg">
+    //                 <h3 className="font-semibold mb-4">Getting Started</h3>
+    //                 <ul className="space-y-3">
+    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
+    //                         <FileText className="h-4 w-4 mr-2" />
+    //                         Quick Start Guide
+    //                     </li>
+    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
+    //                         <FileText className="h-4 w-4 mr-2" />
+    //                         Basic Tutorial
+    //                     </li>
+    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
+    //                         <FileText className="h-4 w-4 mr-2" />
+    //                         Advanced Features
+    //                     </li>
+    //                 </ul>
+    //             </div>
+    //             <div className="p-4 border rounded-lg">
+    //                 <h3 className="font-semibold mb-4">Popular Topics</h3>
+    //                 <ul className="space-y-3">
+    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
+    //                         <FileText className="h-4 w-4 mr-2" />
+    //                         Best Practices
+    //                     </li>
+    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
+    //                         <FileText className="h-4 w-4 mr-2" />
+    //                         API Documentation
+    //                     </li>
+    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
+    //                         <FileText className="h-4 w-4 mr-2" />
+    //                         Troubleshooting Guide
+    //                     </li>
+    //                 </ul>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>
+    <div className="min-h-min bg-gray-50 p-6">
+        {/* Header */}
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">My Library</h1>
+
+        {/* Table Header */}
+        <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[600px] border-collapse">
+                <thead>
+                    <tr className="bg-gray-100">
+                        <th className="text-left py-3 px-4 font-medium text-gray-700">Type</th>
+                        <th className="text-left py-3 px-4 font-medium text-gray-700">Name</th>
+                        <th className="text-left py-3 px-4 font-medium text-gray-700">Items</th>
+                        <th className="text-left py-3 px-4 font-medium text-gray-700">Owner</th>
+                        <th className="text-left py-3 px-4 font-medium text-gray-700">Languages</th>
+                        <th className="text-left py-3 px-4 font-medium text-gray-700">
+                            <div className="flex items-center gap-1">
+                                Last Modified
+                                <ChevronDown className="w-4 h-4" />
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        {/* Empty State */}
+        <div className="mt-8 text-center">
+            <p className="text-lg text-gray-700 mb-4">
+                Let's get started by creating your first library question, block, template or collection. Click the New button to create it.
+            </p>
+            <p className="text-sm text-gray-600 italic">
+                Advanced users: You can also drag and drop XLSForms here and they will be uploaded and converted to library items.
+            </p>
+        </div>
+    </div>
+);
+
+// Projects Content Component
+const ProjectsContent = ({
+    isFilterOpen,
+    setIsFilterOpen,
+    isFieldsOpen,
+    setIsFieldsOpen,
+    selectedFields,
+    setSelectedFields
+}) => {
+    return (
+        <div className="p-8">
+            <div className="flex justify-between items-center mb-8">
+                <h2 className="text-2xl font-bold text-gray-800">My Projects</h2>
+                <div className="flex items-center space-x-4">
+                    <button
+                        onClick={() => setIsFilterOpen(true)}
+                        className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                    >
+                        <Filter className="h-5 w-5" />
+                        <span>Filter</span>
+                    </button>
+                    <button
+                        onClick={() => setIsFieldsOpen(true)}
+                        className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                    >
+                        <Grid className="h-5 w-5" />
+                        <span>Fields</span>
+                    </button>
+                    <button className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                        <Archive className="h-5 w-5" />
+                        <span>Archive</span>
+                    </button>
+                    <button className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
+                        <Delete className="h-5 w-5" />
+                        <span>Delete</span>
+                    </button>
+                </div>
+            </div>
+
+            <div className="overflow-x-auto bg-white rounded-lg shadow">
+                <table className="w-full">
+                    <thead>
+                        <tr className="border-b">
+                            <th className="px-6 py-3 text-left">
+                                <input type="checkbox" className="rounded border-gray-300" />
+                            </th>
+                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Project name</th>
+                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Status</th>
+                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Owner</th>
+                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Date modified</th>
+                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Date deployed</th>
+                            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Submissions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="border-b border-gray-400 hover:bg-gray-50">
+                            <td className="px-6 py-4">
+                                <input type="checkbox" className="rounded border-gray-300" />
+                            </td>
+                            <td className="px-6 py-4">
+                                <a href="#" className="text-blue-600 hover:underline">
+                                    Demo Project
+                                </a>
+                            </td>
+                            <td className="px-6 py-4">
+                                <span className="flex items-center text-blue-600">
+                                    <Rocket className="h-4 w-4 mr-1" />
+                                    deployed
+                                </span>
+                            </td>
+                            <td className="px-6 py-4">me</td>
+                            <td className="px-6 py-4">February 5, 2025</td>
+                            <td className="px-6 py-4">February 5, 2025</td>
+                            <td className="px-6 py-4">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+};
+
+// Main Component
 export default function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -8,14 +273,7 @@ export default function Home() {
     const [selectedFields, setSelectedFields] = useState([]);
     const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-    const toggleFilterPopup = () => {
-        setIsFilterOpen(!isFilterOpen);
-    };
-
-    const toggleFieldsPopup = () => {
-        setIsFieldsOpen(!isFieldsOpen);
-    };
+    const [activeSection, setActiveSection] = useState("projects");
 
     const toggleProfile = () => {
         setIsProfileOpen(!isProfileOpen);
@@ -25,6 +283,26 @@ export default function Home() {
         setSelectedFields(prev =>
             prev.includes(field) ? prev.filter(f => f !== field) : [...prev, field]
         );
+    };
+
+    const renderContent = () => {
+        switch (activeSection) {
+            case "clipboard":
+                return <ClipboardContent />;
+            case "book":
+                return <BookContent />;
+            default:
+                return (
+                    <ProjectsContent
+                        isFilterOpen={isFilterOpen}
+                        setIsFilterOpen={setIsFilterOpen}
+                        isFieldsOpen={isFieldsOpen}
+                        setIsFieldsOpen={setIsFieldsOpen}
+                        selectedFields={selectedFields}
+                        setSelectedFields={setSelectedFields}
+                    />
+                );
+        }
     };
 
     return (
@@ -56,26 +334,13 @@ export default function Home() {
                             <span className="text-white font-semibold">V</span>
                         </button>
 
-                        {/* Profile Dropdown Menu */}
                         {isProfileOpen && (
                             <div className="absolute right-0 top-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1 text-gray-700 z-50">
-                                <button
-                                    className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
-                                    onClick={() => {
-                                        console.log("Settings clicked");
-                                        setIsProfileOpen(false);
-                                    }}
-                                >
+                                <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100">
                                     <Settings className="h-4 w-4 mr-2" />
                                     Account Settings
                                 </button>
-                                <button
-                                    className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 text-red-600"
-                                    onClick={() => {
-                                        console.log("Logout clicked");
-                                        setIsProfileOpen(false);
-                                    }}
-                                >
+                                <button className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 text-red-600">
                                     <LogOut className="h-4 w-4 mr-2" />
                                     Logout
                                 </button>
@@ -85,18 +350,29 @@ export default function Home() {
                 </div>
             </header>
 
-            {/* Main Content */}
             <div className="flex flex-1">
-                {/* Sidebar */}
+
+                {/* Left Sidebar */}
                 <aside className="w-16 bg-gray-200 shadow-gray-700 hidden md:flex flex-col items-center py-4 space-y-8">
-                    <a href="#" className="p-2 rounded-md hover:bg-gray-200">
-                        <Clipboard className="h-6 w-6 text-teal-500" />
-                    </a>
-                    <a href="#" className="p-2 rounded-md hover:bg-gray-200">
-                        <Book className="h-6 w-6 text-gray-500" />
-                    </a>
+                    <button
+                        onClick={() => setActiveSection("clipboard")}
+                        className={`p-2 rounded-md hover:bg-gray-300 transition-colors ${activeSection === "clipboard" ? "bg-gray-300" : ""
+                            }`}
+                    >
+                        <Clipboard className={`h-6 w-6 ${activeSection === "clipboard" ? "text-blue-500" : "text-teal-500"
+                            }`} />
+                    </button>
+                    <button
+                        onClick={() => setActiveSection("book")}
+                        className={`p-2 rounded-md hover:bg-gray-300 transition-colors ${activeSection === "book" ? "bg-gray-300" : ""
+                            }`}
+                    >
+                        <Book className={`h-6 w-6 ${activeSection === "book" ? "text-blue-500" : "text-gray-500"
+                            }`} />
+                    </button>
                 </aside>
 
+                {/* Secondary Sidebar */}
                 <aside className="w-60 bg-gray-50 border-r border-gray-300 shadow-xl hidden md:block">
                     <div className="p-4 space-y-6">
                         <button
@@ -126,97 +402,15 @@ export default function Home() {
                     </div>
                 </aside>
 
-                {/* Main Content Area */}
-                <main className="flex-1 p-8">
-                    <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-2xl font-bold text-gray-800">My Projects</h2>
-                        <div className="flex items-center space-x-4">
-                            <button onClick={toggleFilterPopup} className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
-                                <Filter className="h-5 w-5" />
-                                <span>filter</span>
-                            </button>
-                            <button onClick={toggleFieldsPopup} className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
-                                <Grid className="h-5 w-5" />
-                                <span>fields</span>
-                            </button>
-                            <button className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
-                                <Archive className="h-5 w-5" />
-                                <span>Archive</span>
-                            </button>
-                            <button className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md">
-                                <Delete className="h-5 w-5" />
-                                <span>Delete</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Projects Table */}
-                    <div className="overflow-x-auto bg-white rounded-lg shadow">
-                        <table className="w-full">
-                            <thead>
-                                <tr className="border-b">
-                                    <th className="px-6 py-3 text-left">
-                                        <input type="checkbox" className="rounded border-gray-300" />
-                                    </th>
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Project name</th>
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Status</th>
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Owner</th>
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Date modified</th>
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Date deployed</th>
-                                    <th className="px-6 py-3 text-left text-sm font-medium text-gray-500">Submissions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="border-b border-gray-400 hover:bg-gray-50">
-                                    <td className="px-6 py-4">
-                                        <input type="checkbox" className="rounded border-gray-300" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <a href="#" className="text-blue-600 hover:underline">
-                                            Demo Project
-                                        </a>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <span className="flex items-center text-blue-600">
-                                            <Rocket className="h-4 w-4 mr-1" />
-                                            deployed
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4">me</td>
-                                    <td className="px-6 py-4">February 5, 2025</td>
-                                    <td className="px-6 py-4">February 5, 2025</td>
-                                    <td className="px-6 py-4">1</td>
-                                </tr>
-
-                                <tr className="border-b border-gray-400 hover:bg-gray-50">
-                                    <td className="px-6 py-4">
-                                        <input type="checkbox" className="rounded border-gray-300" />
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <a href="#" className="text-blue-600 hover:underline">
-                                            My Project
-                                        </a>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <span className="flex items-center text-blue-600">
-                                            <Rocket className="h-4 w-4 mr-1" />
-                                            deployed
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4">me</td>
-                                    <td className="px-6 py-4">February 5, 2025</td>
-                                    <td className="px-6 py-4">February 5, 2025</td>
-                                    <td className="px-6 py-4">1</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                {/* Main Content */}
+                <main className="flex-1">
+                    {renderContent()}
                 </main>
             </div>
 
-            {/* New Project Modal */}
+            {/* Modals */}
             {isNewProjectModalOpen && (
-                <div className="fixed inset-0 bg-gray-300 opacity-95 flex items-start justify-center pt-16 z-50">
+                <div className="fixed inset-0 bg-gray-300 bg-opacity-95 flex items-start justify-center pt-16 z-50">
                     <div className="bg-white rounded-lg w-full max-w-2xl mx-4">
                         <div className="flex items-center bg-blue-400 justify-between p-6 border-b">
                             <h2 className="text-2xl font-semibold text-gray-800">Create project: Choose a source</h2>
@@ -261,11 +455,11 @@ export default function Home() {
 
             {/* Filter Popup */}
             {isFilterOpen && (
-                <div className="fixed inset-0 bg-gray-500 opacity-95 flex items-center justify-center">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-95 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg p-6 w-96">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-semibold">Filter</h3>
-                            <button onClick={toggleFilterPopup} className="text-gray-500 hover:text-gray-700">
+                            <button onClick={() => setIsFilterOpen(false)} className="text-gray-500 hover:text-gray-700">
                                 <X className="h-5 w-5" />
                             </button>
                         </div>
@@ -312,11 +506,11 @@ export default function Home() {
 
             {/* Fields Popup */}
             {isFieldsOpen && (
-                <div className="fixed inset-0 bg-gray-500 opacity-95 flex items-center justify-center">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-95 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg p-6 w-96">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-lg font-semibold">Select Fields</h3>
-                            <button onClick={toggleFieldsPopup} className="text-gray-500 hover:text-gray-700">
+                            <button onClick={() => setIsFieldsOpen(false)} className="text-gray-500 hover:text-gray-700">
                                 <X className="h-5 w-5" />
                             </button>
                         </div>
@@ -334,7 +528,7 @@ export default function Home() {
                             ))}
                         </div>
                         <div className="flex justify-end space-x-4 mt-6">
-                            <button className="px-4 py-2 text-red-600 bg-red-300 hover:bg-red-200 rounded-md">Reset</button>
+                            <button className="px-4 py-2 text-red-600 bg-red-100 hover:bg-red-200 rounded-md">Reset</button>
                             <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">Apply</button>
                         </div>
                     </div>
