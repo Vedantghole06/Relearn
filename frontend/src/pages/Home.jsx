@@ -1,37 +1,7 @@
 import { useState } from "react";
 import { Search, Filter, Grid, Archive, Rocket, FileText, Delete, X, Pencil, Upload, Link, Clipboard, Book, LogOut, Settings, ChevronDown } from "lucide-react";
 
-// Clipboard Content Component
 const ClipboardContent = () => (
-    // <div className="p-8">
-    //     <h2 className="text-2xl font-bold text-gray-800 mb-6">Clipboard Dashboard</h2>
-    //     <div className="bg-white rounded-lg shadow p-6">
-    //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    //             <div className="p-4 border rounded-lg">
-    //                 <h3 className="font-semibold mb-2">Recent Copies</h3>
-    //                 <ul className="space-y-2">
-    //                     <li className="text-gray-600">Copy item 1</li>
-    //                     <li className="text-gray-600">Copy item 2</li>
-    //                     <li className="text-gray-600">Copy item 3</li>
-    //                 </ul>
-    //             </div>
-    //             <div className="p-4 border rounded-lg">
-    //                 <h3 className="font-semibold mb-2">Saved Items</h3>
-    //                 <ul className="space-y-2">
-    //                     <li className="text-gray-600">Saved item 1</li>
-    //                     <li className="text-gray-600">Saved item 2</li>
-    //                 </ul>
-    //             </div>
-    //             <div className="p-4 border rounded-lg">
-    //                 <h3 className="font-semibold mb-2">Quick Actions</h3>
-    //                 <div className="space-y-2">
-    //                     <button className="w-full px-4 py-2 text-sm bg-blue-50 text-blue-600 rounded">Copy to Clipboard</button>
-    //                     <button className="w-full px-4 py-2 text-sm bg-green-50 text-green-600 rounded">Save Item</button>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
     <div className="p-8">
         <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold text-gray-800">My Projects</h2>
@@ -105,47 +75,6 @@ const ClipboardContent = () => (
 
 // Book Content Component
 const BookContent = () => (
-    // <div className="p-8">
-    //     <h2 className="text-2xl font-bold text-gray-800 mb-6">Documentation Center</h2>
-    //     <div className="bg-white rounded-lg shadow p-6">
-    //         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    //             <div className="p-4 border rounded-lg">
-    //                 <h3 className="font-semibold mb-4">Getting Started</h3>
-    //                 <ul className="space-y-3">
-    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
-    //                         <FileText className="h-4 w-4 mr-2" />
-    //                         Quick Start Guide
-    //                     </li>
-    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
-    //                         <FileText className="h-4 w-4 mr-2" />
-    //                         Basic Tutorial
-    //                     </li>
-    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
-    //                         <FileText className="h-4 w-4 mr-2" />
-    //                         Advanced Features
-    //                     </li>
-    //                 </ul>
-    //             </div>
-    //             <div className="p-4 border rounded-lg">
-    //                 <h3 className="font-semibold mb-4">Popular Topics</h3>
-    //                 <ul className="space-y-3">
-    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
-    //                         <FileText className="h-4 w-4 mr-2" />
-    //                         Best Practices
-    //                     </li>
-    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
-    //                         <FileText className="h-4 w-4 mr-2" />
-    //                         API Documentation
-    //                     </li>
-    //                     <li className="flex items-center text-blue-600 hover:underline cursor-pointer">
-    //                         <FileText className="h-4 w-4 mr-2" />
-    //                         Troubleshooting Guide
-    //                     </li>
-    //                 </ul>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
     <div className="min-h-min bg-gray-50 p-6">
         {/* Header */}
         <h1 className="text-2xl font-bold text-gray-800 mb-6">My Library</h1>
@@ -359,7 +288,7 @@ export default function Home() {
                         className={`p-2 rounded-md hover:bg-gray-300 transition-colors ${activeSection === "clipboard" ? "bg-gray-300" : ""
                             }`}
                     >
-                        <Clipboard className={`h-6 w-6 ${activeSection === "clipboard" ? "text-blue-500" : "text-teal-500"
+                        <Clipboard className={`h-6 w-6 ${activeSection === "clipboard" ? "text-teal-500" : "text-gray-500"
                             }`} />
                     </button>
                     <button
@@ -367,7 +296,7 @@ export default function Home() {
                         className={`p-2 rounded-md hover:bg-gray-300 transition-colors ${activeSection === "book" ? "bg-gray-300" : ""
                             }`}
                     >
-                        <Book className={`h-6 w-6 ${activeSection === "book" ? "text-blue-500" : "text-gray-500"
+                        <Book className={`h-6 w-6 ${activeSection === "book" ? "text-teal-500" : "text-gray-500"
                             }`} />
                     </button>
                 </aside>
