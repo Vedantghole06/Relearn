@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../axiosinstance.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +17,7 @@ const SignupForm = () => {
         password: '',
         confirmPassword: '',
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -44,6 +45,8 @@ const SignupForm = () => {
                 password: '',
                 confirmPassword: '',
             });
+            // Navigate to the Home page
+            navigate('/home');
         } catch (error) {
             toast.error(error.response.data.message);
         }

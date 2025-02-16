@@ -10,14 +10,14 @@ const app = express();
 
 // Use CORS middleware
 app.use(cors({
-    origin: 'http://localhost:5173', // Update this to match your frontend URL
+    origin: 'http://localhost:5174', // Update this to match your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies to be sent with requests
 }));
 
 app.use(express.json());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI)

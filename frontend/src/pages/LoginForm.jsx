@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../axiosinstance.js';
 
 const LoginForm = () => {
@@ -7,6 +7,7 @@ const LoginForm = () => {
         username: '',
         password: '',
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,7 +22,10 @@ const LoginForm = () => {
         try {
             const response = await axiosInstance.post('/users/login', formData);
             console.log(response.data);
-            // Handle successful login (e.g., store token, redirect to home page)
+            // Store the token in local storage
+            localStorage.setItem('token', response.data.token);
+            // Navigate to the Home page
+            navigate('/home');
         } catch (error) {
             console.error('Error logging in:', error.response.data);
             // Handle error (e.g., display error message)
@@ -33,7 +37,7 @@ const LoginForm = () => {
             style={{ backgroundImage: 'url(https://kf.kobotoolbox.org/static/compiled/signup_photo.jpg)' }}>
             <div className="bg-gray-800 opacity-85 p-8 rounded-lg shadow-lg w-full max-w-sm">
                 <div className="text-center mb-6">
-                    <img src="#" alt="Relearn Logo" className="h-10 mx-auto" />
+                    <img src={null} alt="Relearn Logo" className="h-10 mx-auto" />
                 </div>
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
